@@ -15,17 +15,30 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
+      // HOME PAGE
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      // ABOUT PAGE
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })
+      // CREAT NEW BOOK
+      .when('/admin/book/create', {
+        templateUrl: 'views/books/create.html',
+        controller: 'CreateBookCtrl'
+      })
+      // SHOW LIST BOOK
+      .when('/admin/book/index', {
+        templateUrl: 'views/books/index.html',
+        controller: 'IndexBookCtrl'
       })
       .otherwise({
         redirectTo: '/'

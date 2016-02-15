@@ -7,16 +7,16 @@
  * # MainCtrl
  * Controller of the websiteApp
  */
+
 angular.module('websiteApp')
-  .controller('MainCtrl', function ($scope, $object) {
+  .controller('MainCtrl', function ($scope, $firebaseObject) {
     var firebaseUrl = new Firebase('https://store-database.firebaseio.com/');
     var bookUrl = firebaseUrl.child('book');
-    // $scope.list = $object(bookUrl);
-    // console.log($scope.list);
-    // $scope.listBook = [];
-    // $scope.click = alert("Hello");
+    var list = $firebaseObject(bookUrl);
+    list.$bindTo($scope,"data");
+
+    //addItem() for add Book into Firebase
     $scope.addItem = function(item) {
-      // alert(item.title);
       this.bookTitle = item.title
       this.bookPrice = item.price
       bookUrl.push(
@@ -24,7 +24,7 @@ angular.module('websiteApp')
           title: this.bookTitle,
           price: this.bookPrice
         });
-      item.val('');
+      //Clear fields when save success!!!
   };
 
   });
