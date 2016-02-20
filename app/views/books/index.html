@@ -11,13 +11,15 @@
         <th>Delete</th>
       </tr>
     </thead>
-    <tbody ng-repeat="book in data">
+    <tbody ng-repeat="book in books">
       <tr>
         <td>{{ $index + 1 }}</td>
         <td>{{ book.title }}</td>
         <td>{{ book.description }}</td>
         <td>{{ book.price | currency }}</td>
-        <td><input type="button" class="btn btn-primary" value="Show"></td>
+        <td>
+          <a class="btn btn-primary" ng-href="#/books/show/{{ book.$id }}">Show</a>
+        </td>
         <td><input type="button" class="btn btn-warning" value="Edit"></td>
         <td><input type="button" class="btn btn-danger" value="Delete"></td>
       </tr>

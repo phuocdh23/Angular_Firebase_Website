@@ -18,17 +18,17 @@ angular
     'ngTouch',
     'firebase'
   ])
+  .value('firebaseUrl', 'https://store-database.firebaseio.com/')
+  .value('book_table', 'book')
+  .factory('Book', function($firebaseArray, firebaseUrl, book_table){
+    return $firebaseArray(new Firebase(firebaseUrl + '/' + book_table));
+  })
   .config(function ($routeProvider) {
     $routeProvider
       // HOME PAGE
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      })
-      // ABOUT PAGE
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
       })
       // CREAT NEW BOOK
       .when('/admin/book/create', {
@@ -38,6 +38,11 @@ angular
       // SHOW LIST BOOK
       .when('/admin/book/index', {
         templateUrl: 'views/books/index.html',
+        controller: 'IndexBookCtrl'
+      })
+      //SHOW BOOK DETAILS
+      .when('/books/show/:id', {
+        templateUrl: 'views/books/show.html',
         controller: 'IndexBookCtrl'
       })
       .otherwise({
