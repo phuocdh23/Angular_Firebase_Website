@@ -9,10 +9,9 @@
  */
 
 angular.module('websiteApp')
-  .controller('IndexBookCtrl', function ($scope, $firebaseObject) {
-    var firebaseUrl = new Firebase('https://store-database.firebaseio.com/');
-    var bookUrl = firebaseUrl.child('book');
-    // Get list book
-    var list = $firebaseObject(bookUrl);
-    list.$bindTo($scope,"data");
+  .controller('IndexBookCtrl', function ($scope, $routeParams, Book) {
+    $scope.books = Book;
+    $scope.books.$loaded().then(function(list){
+      $scope.item = list.$getRecord($routeParams.id);
+    })
   });
