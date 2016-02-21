@@ -12,7 +12,6 @@ angular.module('websiteApp')
   .controller('IndexBookCtrl', function ($scope, $routeParams, Book) {
     // Get list of books
     $scope.books = Book;
-    $scope.item = Book;
     // Get single book by book id
     $scope.books.$loaded().then(function(list){
       $scope.item = Book.$getRecord($routeParams.id);
