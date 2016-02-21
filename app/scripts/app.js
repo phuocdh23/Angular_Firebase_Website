@@ -30,19 +30,25 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      // CREAT NEW BOOK
+      // BOOK
+      // Create new book
       .when('/admin/book/create', {
         templateUrl: 'views/books/create.html',
         controller: 'CreateBookCtrl'
       })
-      // SHOW LIST BOOK
+      // Show list book
       .when('/admin/book/index', {
         templateUrl: 'views/books/index.html',
         controller: 'IndexBookCtrl'
       })
-      //SHOW BOOK DETAILS
+      //Show book details
       .when('/books/show/:id', {
         templateUrl: 'views/books/show.html',
+        controller: 'IndexBookCtrl'
+      })
+      //Edit Book
+      .when('/books/edit/:id', {
+        templateUrl: 'views/books/edit.html',
         controller: 'IndexBookCtrl'
       })
       .otherwise({
