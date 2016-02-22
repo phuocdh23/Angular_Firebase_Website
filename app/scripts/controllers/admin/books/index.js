@@ -13,18 +13,21 @@ angular.module('websiteApp')
     // Get list of books
     $scope.books = Book;
     // Get single book by book id
-    $scope.books.$loaded().then(function(list){
+    $scope.books.$loaded().then(function(){
       $scope.item = Book.$getRecord($routeParams.id);
     });
-    // Edit book
-    $scope.editBook = function(){
-      console.log($scope.item);
-      var save = $scope.books.$save($scope.item);
-      if (save) {
-        alert("Save success!");
-      }
-      else {
-        alert("Something wrong! Try again!");
+    // Delete book
+    $scope.removeBook = function(key){
+      var item = $scope.books.$getRecord(key);
+      var confirmed = confirm("Are you still want to delete "+ item.title + "?");
+      if (confirmed) {
+        var destroy = $scope.books.$remove(item);
+        if(destroy) {
+          alert("Deleted!");
+        }
+        else {
+          alert("Something wrong!");
+        }
       }
     };
   });

@@ -9,7 +9,7 @@
  */
 
 angular.module('websiteApp')
-  .controller('CreateBookCtrl', function ($scope, Book) {
+  .controller('CreateBookCtrl', function ($scope, $location, Book) {
     $scope.book = Book;
     $scope.addBook = function() {
       // Get data from ng-model
@@ -18,7 +18,6 @@ angular.module('websiteApp')
         price: $scope.book.price,
         description: $scope.book.description,
       });
-
       // Save data into Firebase
       if (save) {
         alert('Create success');
