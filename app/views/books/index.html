@@ -23,7 +23,10 @@
         <td>
           <a class="btn btn-warning" ng-href="#/books/edit/{{ book.$id }}">Edit</a>
         </td>
-        <td><input type="button" class="btn btn-danger" value="Delete"></td>
+        <td>
+          <!-- <button type="button" class="btn btn-danger" confirm="Do it?">Edit</button> -->
+          <a class="btn btn-danger" ng-click="removeBook('{{ book.$id }}')">Delete</a>
+        </td>
       </tr>
     </tbody>
   </table>

@@ -32,12 +32,12 @@ angular
       })
       // BOOK
       // Create new book
-      .when('/admin/book/create', {
+      .when('/admin/books/create', {
         templateUrl: 'views/books/create.html',
         controller: 'CreateBookCtrl'
       })
-      // Show list book
-      .when('/admin/book/index', {
+      // Show list book + Remove book
+      .when('/admin/books/index', {
         templateUrl: 'views/books/index.html',
         controller: 'IndexBookCtrl'
       })
@@ -49,7 +49,7 @@ angular
       //Edit Book
       .when('/books/edit/:id', {
         templateUrl: 'views/books/edit.html',
-        controller: 'IndexBookCtrl'
+        controller: 'EditBookCtrl'
       })
       .otherwise({
         redirectTo: '/'
